@@ -13,14 +13,14 @@ export function TimelineDemo() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <Image
-              src="/people1.jpg"
+              src={getImagePath('/people1.jpg')}
               alt="Founded"
               width={500}
               height={500}
               className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-lg"
             />
             <Image
-              src="/people2.jpg"
+              src={getImagePath('/people2.jpg')}
               alt="Early Team"
               width={500}
               height={500}
@@ -39,14 +39,14 @@ export function TimelineDemo() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <Image
-              src="/people3.jpg"
+              src={getImagePath('/people3.jpg')}
               alt="100 Projects"
               width={500}
               height={500}
               className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-lg"
             />
             <Image
-              src="/bh1.jpg"
+              src={getImagePath('/bh1.jpg')}
               alt="Milestone"
               width={500}
               height={500}
@@ -65,14 +65,14 @@ export function TimelineDemo() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <Image
-              src="/id1.jpg"
+              src={getImagePath('/id1.jpg')}
               alt="Interior Design"
               width={500}
               height={500}
               className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-lg"
             />
             <Image
-              src="/pmc1.jpg"
+              src={getImagePath('/pmc1.jpg')}
               alt="Consultancy"
               width={500}
               height={500}
@@ -91,14 +91,14 @@ export function TimelineDemo() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <Image
-              src="/pmc2.jpg"
+              src={getImagePath('/pmc2.jpg')}
               alt="Award"
               width={500}
               height={500}
               className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-lg"
             />
             <Image
-              src="/id2.jpg"
+              src={getImagePath('/id2.jpg')}
               alt="Recognition"
               width={500}
               height={500}

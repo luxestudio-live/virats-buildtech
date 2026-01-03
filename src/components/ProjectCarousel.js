@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { getImagePath } from '../lib/image-path';
 
 const images = [
   "/pic1.jpg",
@@ -15,7 +16,7 @@ const images = [
   "/id2.jpg",
   "/pmc1.jpg",
   "/pmc2.jpg",
-];
+].map(getImagePath);
 
 export default function ProjectCarousel() {
   const carouselRef = useRef(null);

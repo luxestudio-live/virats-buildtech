@@ -1,14 +1,15 @@
 import React, { useRef } from "react";
+import { getImagePath } from '../../lib/image-path';
 
 const images = [
-  { src: "/pic1.jpg", desc: "Project 1" },
-  { src: "/pic2.jpg", desc: "Project 2" },
-  { src: "/pic3.jpg", desc: "Project 3" },
-  { src: "/pic4.jpg", desc: "Project 4" },
-  { src: "/pic5.jpg", desc: "Project 5" },
-  { src: "/pic6.jpg", desc: "Project 6" },
-  { src: "/pic7.jpg", desc: "Project 7" },
-  { src: "/pic8.jpg", desc: "Project 8" },
+  { src: getImagePath("/pic1.jpg"), desc: "Project 1" },
+  { src: getImagePath("/pic2.jpg"), desc: "Project 2" },
+  { src: getImagePath("/pic3.jpg"), desc: "Project 3" },
+  { src: getImagePath("/pic4.jpg"), desc: "Project 4" },
+  { src: getImagePath("/pic5.jpg"), desc: "Project 5" },
+  { src: getImagePath("/pic6.jpg"), desc: "Project 6" },
+  { src: getImagePath("/pic7.jpg"), desc: "Project 7" },
+  { src: getImagePath("/pic8.jpg"), desc: "Project 8" },
 ];
 
 export default function ProjectImageCarousel() {

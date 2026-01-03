@@ -1,6 +1,7 @@
 // @ts-nocheck
 
 import { cn } from "../../lib/utils";
+import { getImagePath } from "../../lib/image-path";
 
 import { motion } from "framer-motion";
 import React, { useRef, useEffect, useState } from "react";
@@ -61,22 +62,22 @@ function RevealImageList() {
     {
       text: "Interior Designing",
       images: [
-        { src: "/id1.jpg", alt: "Interior Designing 1" },
-        { src: "/id2.jpg", alt: "Interior Designing 2" },
+        { src: getImagePath("/id1.jpg"), alt: "Interior Designing 1" },
+        { src: getImagePath("/id2.jpg"), alt: "Interior Designing 2" },
       ],
     },
     {
       text: "Building Home",
       images: [
-        { src: "/bh1.jpg", alt: "Building Home 1" },
-        { src: "/bh2.jpg", alt: "Building Home 2" },
+        { src: getImagePath("/bh1.jpg"), alt: "Building Home 1" },
+        { src: getImagePath("/bh2.jpg"), alt: "Building Home 2" },
       ],
     },
     {
       text: "Project Management Consultancy",
       images: [
-        { src: "/pmc1.jpg", alt: "Project Management Consultancy 1" },
-        { src: "/pmc2.jpg", alt: "Project Management Consultancy 2" },
+        { src: getImagePath("/pmc1.jpg"), alt: "Project Management Consultancy 1" },
+        { src: getImagePath("/pmc2.jpg"), alt: "Project Management Consultancy 2" },
       ],
     },
   ];

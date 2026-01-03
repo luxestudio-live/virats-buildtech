@@ -1,21 +1,22 @@
 import InfiniteGallery from "./3d-gallery-photography";
+import { getImagePath } from '../../lib/image-path';
 
 export default function DemoOne() {
   const sampleImages = [
-    { src: '/bh1.jpg', alt: 'Building Home 1' },
-    { src: '/bh2.jpg', alt: 'Building Home 2' },
-    { src: '/id1.jpg', alt: 'Interior Designing 1' },
-    { src: '/id2.jpg', alt: 'Interior Designing 2' },
-    { src: '/pic1.jpg', alt: 'Project Pic 1' },
-    { src: '/pic2.jpg', alt: 'Project Pic 2' },
-    { src: '/pic3.jpg', alt: 'Project Pic 3' },
-    { src: '/pic4.jpg', alt: 'Project Pic 4' },
-    { src: '/pic5.jpg', alt: 'Project Pic 5' },
-    { src: '/pic6.jpg', alt: 'Project Pic 6' },
-    { src: '/pic7.jpg', alt: 'Project Pic 7' },
-    { src: '/pic8.jpg', alt: 'Project Pic 8' },
-    { src: '/pmc1.jpg', alt: 'Project Management Consultancy 1' },
-    { src: '/pmc2.jpg', alt: 'Project Management Consultancy 2' },
+    { src: getImagePath('/bh1.jpg'), alt: 'Building Home 1' },
+    { src: getImagePath('/bh2.jpg'), alt: 'Building Home 2' },
+    { src: getImagePath('/id1.jpg'), alt: 'Interior Designing 1' },
+    { src: getImagePath('/id2.jpg'), alt: 'Interior Designing 2' },
+    { src: getImagePath('/pic1.jpg'), alt: 'Project Pic 1' },
+    { src: getImagePath('/pic2.jpg'), alt: 'Project Pic 2' },
+    { src: getImagePath('/pic3.jpg'), alt: 'Project Pic 3' },
+    { src: getImagePath('/pic4.jpg'), alt: 'Project Pic 4' },
+    { src: getImagePath('/pic5.jpg'), alt: 'Project Pic 5' },
+    { src: getImagePath('/pic6.jpg'), alt: 'Project Pic 6' },
+    { src: getImagePath('/pic7.jpg'), alt: 'Project Pic 7' },
+    { src: getImagePath('/pic8.jpg'), alt: 'Project Pic 8' },
+    { src: getImagePath('/pmc1.jpg'), alt: 'Project Management Consultancy 1' },
+    { src: getImagePath('/pmc2.jpg'), alt: 'Project Management Consultancy 2' },
   ];
 
   return (

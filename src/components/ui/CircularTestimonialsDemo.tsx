@@ -1,5 +1,6 @@
 import React from "react";
 import { CircularTestimonials } from './circular-testimonials';
+import { getImagePath } from '../../lib/image-path';
 
 const testimonials = [
   {
@@ -7,21 +8,21 @@ const testimonials = [
       "I was impressed by the quality and professionalism! The team was friendly and attentive. I'll definitely recommend them!",
     name: "Tamar Mendelson",
     designation: "Home Owner",
-    src: "/people1.jpg",
+    src: getImagePath("/people1.jpg"),
   },
   {
     quote:
       "This company exceeded all expectations! The staff truly goes above and beyond. I'll keep returning for more exceptional service.",
     name: "Joe Charlescraft",
     designation: "Frequent Client",
-    src: "/people2.jpg",
+    src: getImagePath("/people2.jpg"),
   },
   {
     quote:
       "Virats BuildTech is a hidden gem! The impeccable service and attention to detail created a memorable experience. Highly recommended!",
     name: "Martina Edelweist",
     designation: "Satisfied Customer",
-    src: "/people3.jpg",
+    src: getImagePath("/people3.jpg"),
   },
 ];
 

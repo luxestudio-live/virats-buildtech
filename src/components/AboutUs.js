@@ -1,6 +1,7 @@
 
 
 import React, { useRef, useEffect, useState } from "react";
+import { getImagePath } from '../lib/image-path';
 
 const aboutText = `At Virats BuildTech, we turn your dreams into reality with innovative design, expert construction, and a commitment to excellence. With over a decade of experience, our team delivers tailored solutions for families and businesses, ensuring every project is completed with integrity, quality, and a personal touch.`;
 
@@ -58,7 +59,7 @@ function AboutUs() {
       <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-5xl gap-12 md:gap-20 p-0">
         {/* Image side */}
         <div className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
-          <img src="/pic1.jpg" alt="About Virats BuildTech" className="rounded-xl shadow-lg object-cover w-full max-w-xs md:max-w-sm h-64 md:h-80" />
+          <img src={getImagePath('/pic1.jpg')} alt="About Virats BuildTech" className="rounded-xl shadow-lg object-cover w-full max-w-xs md:max-w-sm h-64 md:h-80" />
         </div>
         {/* Text side */}
         <div className={paraRevealed ? "transition-all duration-700 mb-8 w-full md:w-1/2" : "transition-all duration-700 mb-32 w-full md:w-1/2"}>
