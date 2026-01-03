@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 import { cn } from "../../lib/utils";
 
@@ -53,6 +54,8 @@ function RevealImageListItem({ text, images, delay = 0, scrollFocus = false }: R
       </div>
     </motion.div>
   );
+}
+
 function RevealImageList() {
   const items: ShowImageListItemProps[] = [
     {

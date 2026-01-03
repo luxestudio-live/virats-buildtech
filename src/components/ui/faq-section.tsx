@@ -108,7 +108,7 @@ export default function FAQWithSpiral() {
       g.setAttribute("y1", "0%");
       g.setAttribute("x2", "100%");
       g.setAttribute("y2", "100%");
-      gradients[cfg.gradient].forEach((color, idx, arr) => {
+      gradients[cfg.gradient]?.forEach((color, idx, arr) => {
         const stop = document.createElementNS(svgNS, "stop");
         stop.setAttribute("offset", `${(idx * 100) / (arr.length - 1)}%`);
         stop.setAttribute("stop-color", color);

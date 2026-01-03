@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, HTMLAttributes } from 'react';
+import React, { useState, useEffect, useRef, type HTMLAttributes } from 'react';
 
 // A simple utility for conditional class names
 const cn = (...classes: (string | undefined | null | false)[]) => {

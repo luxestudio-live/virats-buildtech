@@ -1,6 +1,6 @@
 
 import type React from 'react';
-import { useRef, useMemo, useCallback, useState, useEffect } from 'react';
+import { useRef, useMemo, useCallback, useState, useEffect, createElement } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
 import * as THREE from 'three';
@@ -59,11 +59,11 @@ const createClothMaterial = () => {
 		transparent: true,
 		uniforms: {
 			map: { value: null },
-			opacity: { value: 1.0 },
-			blurAmount: { value: 0.0 },
-			scrollForce: { value: 0.0 },
-			time: { value: 0.0 },
-			isHovered: { value: 0.0 },
+			opacity: { value: 1 },
+			blurAmount: { value: 0 },
+			scrollForce: { value: 0 },
+			time: { value: 0 },
+			isHovered: { value: 0 },
 		},
 		vertexShader: `
 			uniform float scrollForce;
@@ -175,17 +175,15 @@ function ImagePlane({
 		}
 	}, [material, isHovered]);
 
-	return (
-		<mesh
-			ref={meshRef}
-			position={position}
-			scale={scale}
-			material={material}
-			onPointerEnter={() => setIsHovered(true)}
-			onPointerLeave={() => setIsHovered(false)}
-		>
-			<planeGeometry args={[1, 1, 32, 32]} />
-		</mesh>
+	return createElement('mesh', {
+		ref: meshRef,
+		position,
+		scale,
+		onPointerEnter: () => setIsHovered(true),
+		onPointerLeave: () => setIsHovered(false),
+	},
+		createElement('planeGeometry', { args: [1, 1, 32, 32] }),
+		createElement('primitive', { object: material, attach: 'material' })
 	);
 }
 
@@ -198,9 +196,9 @@ function GalleryScene({
 	   fadeOut: { start: 0.85, end: 0.95 },
    },
    blurSettings = {
-	   blurIn: { start: 0.0, end: 0.1 },
-	   blurOut: { start: 0.9, end: 1.0 },
-	   maxBlur: 3.0,
+	   blurIn: { start: 0, end: 0.1 },
+	   blurOut: { start: 0.9, end: 1 },
+	   maxBlur: 3,
    },
 }: Omit<InfiniteGalleryProps, 'className' | 'style'>) {
 	const [scrollVelocity, setScrollVelocity] = useState(0);
@@ -321,23 +319,21 @@ function GalleryScene({
 		// Update time uniform for all materials
 		const time = state.clock.getElapsedTime();
 		materials.forEach((material) => {
-			if (material && material.uniforms) {
-				material.uniforms.time.value = time;
-				material.uniforms.scrollForce.value = scrollVelocity;
-			}
-		});
+		if (material?.uniforms?.time && material?.uniforms?.scrollForce) {
+			material.uniforms.time.value = time;
+			material.uniforms.scrollForce.value = scrollVelocity;
+		}
+	});
 
-		// Update plane positions
-		const imageAdvance =
-			totalImages > 0 ? visibleCount % totalImages || totalImages : 0;
-		const totalRange = depthRange;
-		const halfRange = totalRange / 2;
+	// Update plane positions
+	const imageAdvance =
+		totalImages > 0 ? visibleCount % totalImages || totalImages : 0;
+	const totalRange = depthRange;
+	const halfRange = totalRange / 2;
 
-		planesData.current.forEach((plane, i) => {
-			let newZ = plane.z + scrollVelocity * delta * 10;
-			let wrapsForward = 0;
-			let wrapsBackward = 0;
-
+	planesData.current.forEach((plane, i) => {		let newZ = plane.z + scrollVelocity * delta * 10;
+		let wrapsForward = 0;
+		let wrapsBackward = 0;
 			if (newZ >= totalRange) {
 				wrapsForward = Math.floor(newZ / totalRange);
 				newZ -= totalRange * wrapsForward;
@@ -429,17 +425,15 @@ function GalleryScene({
 
 			// Update material uniforms
 			const material = materials[i];
-			if (material && material.uniforms) {
-				material.uniforms.opacity.value = opacity;
-				material.uniforms.blurAmount.value = blur;
-			}
-		});
+		if (material?.uniforms?.opacity && material?.uniforms?.blurAmount) {
+			material.uniforms.opacity.value = opacity;
+			material.uniforms.blurAmount.value = blur;
+		}
 	});
+});
 
-	if (normalizedImages.length === 0) return null;
-
-	return (
-		<>
+if (normalizedImages.length === 0) return null;
+return (		<>
 			{planesData.current.map((plane, i) => {
 				const texture = textures[plane.imageIndex];
 				const material = materials[i];
@@ -449,11 +443,12 @@ function GalleryScene({
 				const worldZ = plane.z - depthRange / 2;
 
 				// Calculate scale to maintain aspect ratio
-				const aspect = texture.image
-					? texture.image.width / texture.image.height
-					: 1;
-				const scale: [number, number, number] =
-					aspect > 1 ? [2 * aspect, 2, 1] : [2, 2 / aspect, 1];
+			const imageData = texture.image as { width?: number; height?: number } | undefined;
+			const aspect = (imageData && typeof imageData.width === 'number' && typeof imageData.height === 'number')
+				? imageData.width / imageData.height
+				: 1;
+			const scale: [number, number, number] =
+				aspect > 1 ? [2 * aspect, 2, 1] : [2, 2 / aspect, 1];
 
 				return (
 					<ImagePlane

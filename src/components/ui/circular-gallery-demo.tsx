@@ -1,5 +1,5 @@
 import React from 'react';
-import { CircularGallery, GalleryItem } from './circular-gallery';
+import { CircularGallery, type GalleryItem } from './circular-gallery';
 
 // Use local images from public folder
 const galleryData: GalleryItem[] = [
