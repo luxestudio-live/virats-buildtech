@@ -1,5 +1,6 @@
 import React from "react";
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
+import { getImagePath } from '../../lib/image-path';
 
 export function PremiumFooter() {
   return (

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { Timeline } from "./timeline";
+import { getImagePath } from '../../lib/image-path';
 
 export function TimelineDemo() {
   const data = [
