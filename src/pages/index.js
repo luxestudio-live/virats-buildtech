@@ -20,7 +20,7 @@ export default function IndexPage() {
         <AboutUs />
       </section>
       {/* Our Services full screen section */}
-      <section id="services" className="w-full min-h-screen flex items-center justify-center bg-black">
+      <section id="services" className="w-full min-h-screen flex items-center justify-center bg-black pt-16 md:pt-24">
         <div className="max-w-7xl mx-auto w-full px-2 py-8 flex flex-col items-center justify-center md:px-4 md:py-24">
           <h3 className="w-full text-4xl font-bold text-white text-center mb-10 tracking-wide">
             Our Services

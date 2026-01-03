@@ -335,9 +335,6 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
         className="w-full h-auto rounded-2xl bg-background dark"
         style={{ maxWidth: "100%", height: "auto", display: "block" }}
       />
-      <div className="absolute bottom-4 left-4 text-xs text-muted-foreground px-2 py-1 rounded-md dark bg-neutral-900">
-        Drag to rotate • Scroll to zoom
-      </div>
     </div>
   )
 }

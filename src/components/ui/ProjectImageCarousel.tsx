@@ -59,7 +59,7 @@ export default function ProjectImageCarousel() {
     <div className="w-full flex flex-col items-center justify-center" style={{ minHeight: '70vh' }}>
       <div className="flex items-center w-full max-w-7xl mx-auto">
         <button
-          className="p-2 rounded-full bg-gradient-to-bl from-[#a78bfa] via-[#3b82f6] to-[#6ee7b7] hover:from-[#7c3aed] hover:to-[#22d3ee] text-white shadow-2xl mr-2 border-0"
+          className="hidden md:block p-2 rounded-full bg-gradient-to-bl from-[#a78bfa] via-[#3b82f6] to-[#6ee7b7] hover:from-[#7c3aed] hover:to-[#22d3ee] text-white shadow-2xl mr-2 border-0"
           onClick={() => {
             const next = (currentIndex - 1 + imageCount) % imageCount;
             setCurrentIndex(next);
@@ -82,13 +82,13 @@ export default function ProjectImageCarousel() {
         </button>
         <div
           ref={carouselRef}
-          className="flex gap-8 overflow-x-auto no-scrollbar py-8 px-2 w-full"
+          className="flex gap-8 md:gap-8 overflow-x-auto no-scrollbar py-8 px-0 md:px-2 w-full"
           style={{ scrollSnapType: "x mandatory", scrollbarWidth: "none" }}
         >
           {images.map((img, idx) => (
             <div
               key={img.src}
-              className="flex-shrink-0 rounded-2xl overflow-hidden shadow-2xl bg-black scroll-snap-align-start relative"
+              className="flex-shrink-0 rounded-2xl overflow-hidden shadow-2xl bg-black scroll-snap-align-center relative"
               style={{
                 width: 'calc(100vw / 3 - 2rem)',
                 height: 'calc(65vh)',
@@ -98,7 +98,7 @@ export default function ProjectImageCarousel() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                scrollSnapAlign: 'start',
+                scrollSnapAlign: 'center',
               }}
             >
               <img
@@ -128,7 +128,7 @@ export default function ProjectImageCarousel() {
           ))}
         </div>
         <button
-          className="p-2 rounded-full bg-gradient-to-br from-[#8f5fe8] via-[#3b82f6] to-[#6ee7b7] hover:from-[#7c3aed] hover:to-[#22d3ee] text-white shadow-2xl ml-2 border-0"
+          className="hidden md:block p-2 rounded-full bg-gradient-to-br from-[#8f5fe8] via-[#3b82f6] to-[#6ee7b7] hover:from-[#7c3aed] hover:to-[#22d3ee] text-white shadow-2xl ml-2 border-0"
           onClick={() => {
             const next = (currentIndex + 1) % imageCount;
             setCurrentIndex(next);
@@ -154,15 +154,22 @@ export default function ProjectImageCarousel() {
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         @media (max-width: 900px) {
-          .scroll-snap-align-start {
-            width: 100vw !important;
+          .scroll-snap-align-center {
+            width: calc(100vw - 2rem) !important;
             height: 60vh !important;
-            min-width: 200px !important;
+            min-width: 280px !important;
             min-height: 200px !important;
             max-height: 500px !important;
             scroll-snap-align: center !important;
+            margin: 0 1rem !important;
           }
-          .scroll-snap-align-start .absolute {
+          .scroll-snap-align-center:first-child {
+            margin-left: calc(50vw - 50% + 1rem) !important;
+          }
+          .scroll-snap-align-center:last-child {
+            margin-right: calc(50vw - 50% + 1rem) !important;
+          }
+          .scroll-snap-align-center .absolute {
             font-size: 1rem !important;
             padding: 0.5rem 1rem !important;
             max-width: 95vw !important;

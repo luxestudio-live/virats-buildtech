@@ -55,36 +55,36 @@ function AboutUs() {
   }, [inFocus]);
 
   return (
-    <section ref={sectionRef} className="w-full min-h-screen flex items-center justify-center px-4 transition-all duration-700 bg-black" style={{height: '100vh', paddingTop: '120px'}}>
-      <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-5xl gap-12 md:gap-20 p-0">
+    <section ref={sectionRef} className="w-full min-h-screen flex items-center justify-center px-4 py-20 md:py-32 transition-all duration-700 bg-black">
+      <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-5xl gap-8 md:gap-20 p-0">
         {/* Image side */}
-        <div className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
+        <div className="w-full md:w-1/2 flex justify-center mb-6 md:mb-0">
           <img src={getImagePath('/pic1.jpg')} alt="About Virats BuildTech" className="rounded-xl shadow-lg object-cover w-full max-w-xs md:max-w-sm h-64 md:h-80" loading="lazy" decoding="async" />
         </div>
         {/* Text side */}
-        <div className={paraRevealed ? "transition-all duration-700 mb-8 w-full md:w-1/2" : "transition-all duration-700 mb-32 w-full md:w-1/2"}>
+        <div className="transition-all duration-700 w-full md:w-1/2">
           <h2 className="text-4xl font-bold text-blue-500 mb-2 text-center md:text-left">About Us</h2>
           <div ref={underlineRef} className="h-0.5 w-24 md:mx-0 mx-auto bg-blue-500 rounded transition-transform" style={{ transform: "scaleX(0)" }} />
           <p ref={paraRef} className="text-lg text-white max-w-2xl text-center md:text-left mt-6 leading-relaxed">
             {aboutText}
           </p>
           {/* Stats Section */}
-          <div className={`grid grid-cols-2 md:grid-cols-4 gap-6 mt-10 text-center transition-opacity duration-700 ${paraRevealed ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-8 md:mt-10 mb-8 md:mb-0 text-center transition-opacity duration-700 ${paraRevealed ? 'opacity-100' : 'opacity-0'}`}>
             <div>
               <div className="text-3xl md:text-4xl font-extrabold text-blue-500">10<span className="text-blue-300">+</span></div>
-              <div className="text-base text-blue-100 mt-1">Years Experience</div>
+              <div className="text-sm md:text-base text-blue-100 mt-1">Years Experience</div>
             </div>
             <div>
               <div className="text-3xl md:text-4xl font-extrabold text-blue-500">120<span className="text-blue-300">+</span></div>
-              <div className="text-base text-blue-100 mt-1">Projects Delivered</div>
+              <div className="text-sm md:text-base text-blue-100 mt-1">Projects Delivered</div>
             </div>
             <div>
               <div className="text-3xl md:text-4xl font-extrabold text-blue-500">15<span className="text-blue-300">+</span></div>
-              <div className="text-base text-blue-100 mt-1">Design Awards</div>
+              <div className="text-sm md:text-base text-blue-100 mt-1">Design Awards</div>
             </div>
             <div>
               <div className="text-3xl md:text-4xl font-extrabold text-blue-500">8<span className="text-blue-300">+</span></div>
-              <div className="text-base text-blue-100 mt-1">Cities Served</div>
+              <div className="text-sm md:text-base text-blue-100 mt-1">Cities Served</div>
             </div>
           </div>
         </div>
