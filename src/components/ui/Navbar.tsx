@@ -39,7 +39,7 @@ export default function Navbar() {
             )}
           </button>
         </div>
-        <nav className="hidden md:flex md:items-center md:justify-end md:space-x-10">
+        <nav className="hidden md:flex md:flex-row md:items-center md:justify-end md:space-x-6 lg:space-x-8 xl:space-x-10">
           {navLinks.map(link => (
             <a key={link.href} href={link.href} className="nav-link">
               {link.label}
