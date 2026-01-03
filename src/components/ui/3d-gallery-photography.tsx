@@ -170,7 +170,7 @@ function ImagePlane({
 	}, [material, texture]);
 
 	useEffect(() => {
-		if (material && material.uniforms) {
+		if (material && material.uniforms && material.uniforms.isHovered) {
 			material.uniforms.isHovered.value = isHovered ? 1.0 : 0.0;
 		}
 	}, [material, isHovered]);
