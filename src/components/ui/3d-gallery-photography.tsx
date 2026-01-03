@@ -164,7 +164,7 @@ function ImagePlane({
 	const [isHovered, setIsHovered] = useState(false);
 
 	useEffect(() => {
-		if (material && texture) {
+		if (material && texture && material.uniforms && material.uniforms.map) {
 			material.uniforms.map.value = texture;
 		}
 	}, [material, texture]);
