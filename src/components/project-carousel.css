@@ -1,0 +1,30 @@
+.carousel-3d {
+  width: 100%;
+  max-width: 1200px;
+  height: 340px;
+  position: relative;
+  perspective: 1200px;
+  overflow: visible;
+}
+
+@media (max-width: 900px) {
+  .carousel-3d {
+    max-width: 98vw;
+    height: 220px;
+  }
+  .carousel-3d-inner figure {
+    width: 120px !important;
+    height: 80px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel-3d {
+    max-width: 100vw;
+    height: 120px;
+  }
+  .carousel-3d-inner figure {
+    width: 70px !important;
+    height: 48px !important;
+  }
+}
