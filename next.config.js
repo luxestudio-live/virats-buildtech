@@ -4,6 +4,7 @@ const repoName = 'virats-buildtech';
 module.exports = {
   reactStrictMode: true,
   swcMinify: true,
+  output: 'export',
   basePath: isGithubPages ? `/${repoName}` : '',
   assetPrefix: isGithubPages ? `/${repoName}/` : '',
   images: {
@@ -11,8 +12,3 @@ module.exports = {
     domains: ['images.unsplash.com'],
   },
 };
-module.exports = {
-  images: {
-    domains: ['images.unsplash.com'],
-  },
-}
