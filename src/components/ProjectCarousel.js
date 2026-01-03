@@ -109,7 +109,7 @@ export default function ProjectCarousel() {
                 }}
                 className="relative"
               >
-                <img src={src} alt={`project-${index}`} />
+                <img src={src} alt={`project-${index}`} loading="lazy" decoding="async" />
                 <span
                   className="absolute left-0 bottom-0 w-full px-2 py-1 text-xs md:text-sm text-white bg-black/60 rounded-b"
                   style={{

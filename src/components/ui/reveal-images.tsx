@@ -39,7 +39,7 @@ function RevealImageListItem({ text, images, delay = 0, scrollFocus = false }: R
       {/* Images appear at the right corner of the text, above the text within the card */}
       <div className={container + " md:h-24 md:w-24 h-20 w-20"} style={{zIndex: 9999}}>
         <div className={effect + " group-hover:scale-125 scale-110 " + imgFocusClass}>
-          <img alt={images[1].alt} src={images[1].src} className="h-full w-full object-cover" />
+          <img alt={images[1].alt} src={images[1].src} className="h-full w-full object-cover" loading="lazy" decoding="async" />
         </div>
       </div>
       <div
@@ -50,7 +50,7 @@ function RevealImageListItem({ text, images, delay = 0, scrollFocus = false }: R
         style={{zIndex: 9999}}
       >
         <div className={cn(effect + " group-hover:scale-125 scale-110 " + imgFocusClass2, "duration-200")}> 
-          <img alt={images[0].alt} src={images[0].src} className="h-full w-full object-cover" />
+          <img alt={images[0].alt} src={images[0].src} className="h-full w-full object-cover" loading="lazy" decoding="async" />
         </div>
       </div>
     </motion.div>

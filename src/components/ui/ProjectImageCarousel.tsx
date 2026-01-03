@@ -106,6 +106,7 @@ export default function ProjectImageCarousel() {
                 alt={img.desc}
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 loading="lazy"
+                decoding="async"
               />
               <div
                 className="absolute bottom-6 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-xl"

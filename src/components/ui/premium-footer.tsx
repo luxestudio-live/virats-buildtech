@@ -60,8 +60,8 @@ export function PremiumFooter() {
       <div className="max-w-7xl mx-auto mt-10 mb-0 pb-6">
         <div className="border-t border-white/10 mb-6" />
         <div className="flex flex-col items-center justify-center text-center">
-          <img src={getImagePath('/transparent-logo.png')} alt="Virats Buildtech Logo" className="w-14 h-14 mb-2" style={{objectFit: 'contain'}} />
-            <img src={getImagePath('/transparent-logo.png')} alt="Virats Buildtech Logo" className="w-40 h-20 mb-2" style={{objectFit: 'contain'}} />
+          <img src={getImagePath('/transparent-logo.png')} alt="Virats Buildtech Logo" className="w-14 h-14 mb-2" style={{objectFit: 'contain'}} loading="eager" decoding="async" />
+            <img src={getImagePath('/transparent-logo.png')} alt="Virats Buildtech Logo" className="w-40 h-20 mb-2" style={{objectFit: 'contain'}} loading="eager" decoding="async" />
           <p className="text-xs text-white/40 mb-2">© {new Date().getFullYear()} Virats Buildtech. All rights reserved.</p>
           <p className="text-sm text-white/60">
             Dreamed, designed, and brought to life by

@@ -124,6 +124,8 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
                     alt={item.photo.text}
                     className="absolute inset-0 w-full h-full object-cover"
                     style={{ objectPosition: item.photo.pos || 'center' }}
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent text-white">
                     <h2 className="text-lg md:text-xl font-bold">{item.title}</h2>

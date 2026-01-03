@@ -486,6 +486,8 @@ function FallbackGallery({ images }: { images: ImageItem[] }) {
 						src={img.src || '/placeholder.svg'}
 						alt={img.alt}
 						className="w-full h-32 object-cover rounded"
+						loading="lazy"
+						decoding="async"
 					/>
 				))}
 			</div>
