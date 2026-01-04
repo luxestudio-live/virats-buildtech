@@ -12,6 +12,7 @@ interface RotatingEarthProps {
 export default function RotatingEarth({ width = 800, height = 600, className = "" }: RotatingEarthProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [error, setError] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   // Responsive container ref for mobile sizing
   const containerRef = useRef<HTMLDivElement>(null)
@@ -111,16 +112,17 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
       return false
     }
 
-    const generateDotsInPolygon = (feature: any, dotSpacing = 16) => {
+    const generateDotsInPolygon = (feature: any, dotSpacing = 20) => {
       const dots: [number, number][] = []
       const bounds = d3.geoBounds(feature)
       const [[minLng, minLat], [maxLng, maxLat]] = bounds
 
-      const stepSize = dotSpacing * 0.08
+      const stepSize = dotSpacing * 0.1
       let pointsGenerated = 0
+      const maxPoints = 1000 // Limit points per feature for performance
 
-      for (let lng = minLng; lng <= maxLng; lng += stepSize) {
-        for (let lat = minLat; lat <= maxLat; lat += stepSize) {
+      for (let lng = minLng; lng <= maxLng && pointsGenerated < maxPoints; lng += stepSize) {
+        for (let lat = minLat; lat <= maxLat && pointsGenerated < maxPoints; lat += stepSize) {
           const point: [number, number] = [lng, lat]
           if (pointInFeature(point, feature)) {
             dots.push(point)
@@ -198,6 +200,11 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
 
     const loadWorldData = async () => {
       try {
+        setIsLoading(true)
+        
+        // Start with simple globe render immediately
+        render()
+        
         const response = await fetch(
           "https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/110m/physical/ne_110m_land.json",
         )
@@ -205,18 +212,26 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
 
         landFeatures = await response.json()
 
-        // Generate dots for all land features
+        // Generate dots for all land features with reduced density
         let totalDots = 0
-        landFeatures.features.forEach((feature: any) => {
-          const dots = generateDotsInPolygon(feature, 16)
+        const maxTotalDots = 5000 // Limit total dots for performance
+        
+        for (const feature of landFeatures.features) {
+          if (totalDots >= maxTotalDots) break
+          
+          const dots = generateDotsInPolygon(feature, 20)
           dots.forEach(([lng, lat]) => {
-            allDots.push({ lng, lat, visible: true })
-            totalDots++
+            if (totalDots < maxTotalDots) {
+              allDots.push({ lng, lat, visible: true })
+              totalDots++
+            }
           })
-        })
+        }
 
+        setIsLoading(false)
         render()
       } catch (err) {
+        setIsLoading(false)
         setError("Failed to load land map data")
       }
     }
@@ -330,6 +345,14 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
       className={`relative w-full max-w-full overflow-x-hidden ${className}`}
       style={{ touchAction: "pan-y" }}
     >
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black rounded-2xl z-10">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+            <p className="text-white text-sm">Loading Globe...</p>
+          </div>
+        </div>
+      )}
       <canvas
         ref={canvasRef}
         className="w-full h-auto rounded-2xl bg-background dark"
